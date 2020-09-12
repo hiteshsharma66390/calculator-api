@@ -19,6 +19,10 @@ app.get("/", (req, res) => {
         message: "Hello world!"
     });
 })
+
+function isFloat(n) {
+    return Number(n) === n && n % 1 !== 0;
+}
 app.post("/add", (req, res) => {
     const { num1, num2 } = req.body;
     if (typeof num1 == "string" || typeof num2 == "string") {
@@ -27,8 +31,8 @@ app.post("/add", (req, res) => {
             message: "Invalid data types"
         });
     }
-    const tempResult = num1 + num2;
-    if (tempResult > 1000000) {
+    const tempResult = parseFloat(num1) + parseFloat(num2);
+    if (tempResult > 1000000 || num1 > 1000000 || num2 > 1000000) {
         return res.json({
             status: "failure",
             message: "Overflow"
@@ -50,7 +54,7 @@ app.post("/sub", (req, res) => {
             message: "Invalid data types"
         });
     }
-    const tempResult = num1 - num2;
+    const tempResult = parseFloat(num1) - parseFloat(num2);
 
     if (tempResult < -1000000) {
         return res.json({
@@ -74,7 +78,7 @@ app.post("/multiply", (req, res) => {
             message: "Invalid data types"
         });
     }
-    const tempResult = num1 * num2;
+    const tempResult = parseFloat(num1) * parseFloat(num2);
     if (tempResult > 1000000) {
         return res.json({
             status: "failure",
@@ -103,11 +107,11 @@ app.post("/division", (req, res) => {
             message: "Cannot divide by zero"
         })
     }
-    const tempResult = num1 / num2;
+    const tempResult = parseFloat(num1) / parseFloat(num2);
 
     if (tempResult > 1000000) {
         return res.json({
-            status: "failure",
+            status: "error",
             message: "Overflow"
         })
     }
