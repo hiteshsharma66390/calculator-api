@@ -85,7 +85,7 @@ app.post("/multiply", (req, res) => {
         status: "success",
         message: "The product of given numbers",
         result: tempResult
-    })
+    });
 
 })
 
@@ -93,7 +93,7 @@ app.post("/division", (req, res) => {
     const { num1, num2 } = req.body;
     if (typeof num1 == "string" || typeof num2 == "string") {
         return res.json({
-            status: "failure",
+            status: "error",
             message: "Invalid data types"
         });
     }
@@ -103,10 +103,19 @@ app.post("/division", (req, res) => {
             message: "Cannot divide by zero"
         })
     }
+    const tempResult = num1 / num2;
+
+    if (tempResult > 1000000) {
+        return res.json({
+            status: "failure",
+            message: "Overflow"
+        })
+    }
+
     return res.json({
         status: "success",
         message: "The division of given numbers",
-        result: num1 / num2
+        result: tempResult
     })
 
 })
