@@ -93,7 +93,7 @@ app.post("/multiply", (req, res) => {
 
 })
 
-app.post("/division", (req, res) => {
+app.post("/divide", (req, res) => {
     const { num1, num2 } = req.body;
     if (num2 === 0) {
         return res.json({
