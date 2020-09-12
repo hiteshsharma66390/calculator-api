@@ -35,7 +35,7 @@ app.post("/add", (req, res) => {
     }
     return res.json({
         status: "success",
-        message: "the sum of given two number",
+        message: "the sum of given two numbers",
         sum: num1 + num2
     })
 
@@ -57,7 +57,7 @@ app.post("/sub", (req, res) => {
     }
     return res.json({
         status: "success",
-        message: "the difference of given two number",
+        message: "the difference of given two numbers",
         difference: num1 - num2
     })
 
