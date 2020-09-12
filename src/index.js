@@ -24,7 +24,7 @@ app.post("/add", (req, res) => {
     if (typeof num1 == "string" || typeof num2 == "string") {
         return res.json({
             status: "failure",
-            message: "invalid data types"
+            message: "Invalid data types"
         });
     }
     if (num1 > 1000000 || num2 > 1000000) {
@@ -46,7 +46,7 @@ app.post("/sub", (req, res) => {
     if (typeof num1 == "string" || typeof num2 == "string") {
         return res.json({
             status: "failure",
-            message: "invalid data types"
+            message: "Invalid data types"
         });
     }
     if (num1 > 1000000 || num2 > 1000000) {
@@ -58,7 +58,7 @@ app.post("/sub", (req, res) => {
     return res.json({
         status: "success",
         message: "the difference of given two number",
-        sum: num1 - num2
+        difference: num1 - num2
     })
 
 })
@@ -68,7 +68,7 @@ app.post("/multiply", (req, res) => {
     if (typeof num1 == "string" || typeof num2 == "string") {
         return res.json({
             status: "failure",
-            message: "invalid data types"
+            message: "Invalid data types"
         });
     }
     if (num1 > 1000000 || num2 > 1000000) {
@@ -80,7 +80,7 @@ app.post("/multiply", (req, res) => {
     return res.json({
         status: "success",
         message: "The product of given numbers",
-        sum: num1 * num2
+        result: num1 * num2
     })
 
 })
@@ -90,7 +90,7 @@ app.post("/division", (req, res) => {
     if (typeof num1 == "string" || typeof num2 == "string") {
         return res.json({
             status: "failure",
-            message: "invalid data types"
+            message: "Invalid data types"
         });
     }
     if (num2 === 0) {
@@ -107,7 +107,7 @@ app.post("/division", (req, res) => {
     return res.json({
         status: "success",
         message: "The division of given numbers",
-        sum: num1 / num2
+        result: num1 / num2
     })
 
 })
