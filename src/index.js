@@ -27,7 +27,8 @@ app.post("/add", (req, res) => {
             message: "Invalid data types"
         });
     }
-    if (num1 > 1000000 || num2 > 1000000) {
+    const tempResult = num1 + num2;
+    if (tempResult > 1000000) {
         return res.json({
             status: "failure",
             message: "Overflow"
@@ -36,7 +37,7 @@ app.post("/add", (req, res) => {
     return res.json({
         status: "success",
         message: "the sum of given two numbers",
-        sum: num1 + num2
+        sum: tempResult
     })
 
 })
@@ -49,7 +50,9 @@ app.post("/sub", (req, res) => {
             message: "Invalid data types"
         });
     }
-    if (num1 > 1000000 || num2 > 1000000) {
+    const tempResult = num1 - num2;
+
+    if (tempResult < -1000000) {
         return res.json({
             status: "failure",
             message: "Underflow"
@@ -58,7 +61,7 @@ app.post("/sub", (req, res) => {
     return res.json({
         status: "success",
         message: "the difference of given two numbers",
-        difference: num1 - num2
+        difference: tempResult
     })
 
 })
@@ -71,7 +74,8 @@ app.post("/multiply", (req, res) => {
             message: "Invalid data types"
         });
     }
-    if (num1 > 1000000 || num2 > 1000000) {
+    const tempResult = num1 * num2;
+    if (tempResult > 1000000) {
         return res.json({
             status: "failure",
             message: "Overflow"
@@ -80,7 +84,7 @@ app.post("/multiply", (req, res) => {
     return res.json({
         status: "success",
         message: "The product of given numbers",
-        result: num1 * num2
+        result: tempResult
     })
 
 })
@@ -96,12 +100,6 @@ app.post("/division", (req, res) => {
     if (num2 === 0) {
         return res.json({
             message: "Cannot divide by zero"
-        })
-    }
-    if (num1 > 1000000 || num2 > 1000000) {
-        return res.json({
-            status: "failure",
-            message: "Underflow"
         })
     }
     return res.json({
